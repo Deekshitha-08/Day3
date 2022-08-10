@@ -1,49 +1,25 @@
 import java.util.Scanner;
 public class CustomExcepation {
-    public class CustomException extends Exception {
+    public static void check (int age) {
 
-        // no-arg constructor
-        public CustomException(){
-            super();
+        if(age<25) {
+            //throw exception if not eligible to stand in election
+            throw new ArithmeticException("nominee is not eligible to stand in election");
         }
-
-        // String-arg constructor
-        public CustomException (String msg) {
-            super(msg);
-        }
-
-    }
-    public class Register {
-
-        public void checkAge(int age)
-                throws CustomException {
-
-            if(age<=25)
-                throw new CustomExcepation (
-                        "Age<=25, not eligible for voting");
+        else {
+            System.out.println("nominee is eligible to vote!!");
         }
     }
+    //main method
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" enter nominee age");
+        int age = sc.nextInt();
+        check(age);
+    }
+
 }
 
-public class CustomException {
 
-    public static void main(String[] args) {
 
-        // declare variables
-        int age = 0;
-        // create Scanner class object
-        Scanner scan = new Scanner(System.in);
-        // read age
-        System.out.print("Enter age: ");
-        age = scan.nextInt();
-        // check age
-        try {
-            Register.checkAge(age);
-            System.out.println("Registering in the voting list.");
-            System.out.println("Registration completed.");
-        } catch(CustomExcepation e) {
-            System.out.println(e.getMessage());
-        }
 
-    }
-}
